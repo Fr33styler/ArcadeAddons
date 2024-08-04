@@ -1,0 +1,1 @@
+ro.fr33styler.arcade.addon.lobbyscoreboard.LobbyScoreboardAddon
