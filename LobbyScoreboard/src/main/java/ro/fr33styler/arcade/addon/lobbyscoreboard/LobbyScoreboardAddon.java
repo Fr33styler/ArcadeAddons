@@ -26,7 +26,7 @@ import java.io.File;
 import java.util.*;
 import java.util.function.BiFunction;
 
-@Description(id = "LobbyScoreboard", author = "Fr33styler", version = "1.0")
+@Description(id = "LobbyScoreboard", author = "Fr33styler", version = "1.01")
 public class LobbyScoreboardAddon extends Addon implements Configuration, Listener {
 
     private BukkitTask task;
@@ -145,8 +145,10 @@ public class LobbyScoreboardAddon extends Addon implements Configuration, Listen
     public void onWorldChange(PlayerChangedWorldEvent event) {
         Player player = event.getPlayer();
         if (!whitelist.contains(player.getWorld().getName())) {
-            player.setScoreboard(EMPTY_SCOREBOARD);
-            scoreboards.remove(player.getUniqueId());
+            Scoreboard scoreboard = scoreboards.remove(player.getUniqueId());
+            if (scoreboard != null && scoreboard == player.getScoreboard()) {
+                player.setScoreboard(EMPTY_SCOREBOARD);
+            }
         } else if (!scoreboards.containsKey(player.getUniqueId())) {
             setNewScoreboard(player);
         }
