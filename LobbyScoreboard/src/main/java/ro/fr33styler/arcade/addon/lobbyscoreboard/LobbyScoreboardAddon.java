@@ -20,7 +20,6 @@ import ro.fr33styler.gameengine.api.addon.annotation.Description;
 import ro.fr33styler.gameengine.api.config.annotation.Setting;
 import ro.fr33styler.gameengine.api.config.annotation.bounded.BoundedInteger;
 import ro.fr33styler.gameengine.api.config.serialize.Configuration;
-import ro.fr33styler.gameengine.api.game.GameManager;
 
 import java.io.File;
 import java.util.*;
