@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>LobbyScoreboard</module>
+        <module>ResetScaleOnJoin</module>
     </modules>
 
     <properties>
