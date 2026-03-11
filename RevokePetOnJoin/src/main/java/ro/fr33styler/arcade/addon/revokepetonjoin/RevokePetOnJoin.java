@@ -1,7 +1,6 @@
 package ro.fr33styler.arcade.addon.revokepetonjoin;
 
 import org.bukkit.Bukkit;
-import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import ro.fr33styler.gameengine.api.addon.Addon;
