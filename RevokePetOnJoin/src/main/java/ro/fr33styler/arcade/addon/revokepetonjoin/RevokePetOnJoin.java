@@ -22,7 +22,9 @@ public class RevokePetOnJoin extends Addon implements Listener {
 
     @EventHandler
     public void onJoin(GameJoinEvent event) {
-        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "pets revoke " + event.getPlayer().getName());
+        Bukkit.getScheduler().runTaskLater(getEngine().getPlugin(), () -> {
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "pets revoke " + event.getPlayer().getName());
+        }, 20);
     }
 
 }
