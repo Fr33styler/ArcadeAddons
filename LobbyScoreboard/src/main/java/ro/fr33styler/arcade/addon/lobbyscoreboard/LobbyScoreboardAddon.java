@@ -1,6 +1,7 @@
 package ro.fr33styler.arcade.addon.lobbyscoreboard;
 
 import me.clip.placeholderapi.PlaceholderAPI;
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -28,6 +29,7 @@ import java.util.function.BiFunction;
 @Description(id = "LobbyScoreboard", author = "Fr33styler", version = "1.02")
 public class LobbyScoreboardAddon extends Addon implements Configuration, Listener {
 
+    private int feature;
     private BukkitTask task;
     private BiFunction<Player, String, String> placeholderAPI = (player, string) -> string;
 
@@ -75,18 +77,15 @@ public class LobbyScoreboardAddon extends Addon implements Configuration, Listen
         getEngine().getUsers().forEachUser(user -> {
             setNewScoreboard(user.toPlayer());
         });
+
+        String[] version = Bukkit.getServer().getBukkitVersion().substring(0, Bukkit.getServer().getBukkitVersion().length() - 14).split("\\.");
+        feature = Integer.parseInt(version[0].equals("1") ? version[1] : version[0]);
     }
 
     @Override
     public void onUnload() {
         whitelist.clear();
         task.cancel();
-    }
-
-
-
-    private String limitLength(String text) {
-        return text.length() > 48 ? text.substring(0, 48) : text;
     }
 
     private void setNewScoreboard(Player player) {
@@ -122,7 +121,24 @@ public class LobbyScoreboardAddon extends Addon implements Configuration, Listen
                 Team team = scoreboard.getTeam(name);
                 if (team == null) continue;
 
-                team.setPrefix(limitLength(ChatColor.translateAlternateColorCodes('&', placeholderAPI.apply(player, this.scoreboard.get(i)))));
+                int maxAffixLength = feature > 12 ? 64 : 16;
+                String text = ChatColor.translateAlternateColorCodes('&', placeholderAPI.apply(player, this.scoreboard.get(i)));
+
+                String prefix = StringUtils.substring(text, 0, maxAffixLength);
+                String suffix = StringUtils.substring(text, prefix.length(), maxAffixLength * 2);
+
+                if (prefix.charAt(prefix.length() - 1) == '§') {
+                    prefix = prefix.substring(0, prefix.length() - 1);
+                    suffix = StringUtils.substring(text, prefix.length(), maxAffixLength * 2 - 1);
+                }
+
+                String colors = ChatColor.getLastColors(prefix);
+                if (colors.length() != 2 || !(colors.charAt(1) == 'f' || colors.charAt(1) == 'r')) {
+                    suffix = StringUtils.substring(colors.concat(suffix), 0, maxAffixLength);
+                }
+
+                team.setPrefix(prefix);
+                team.setSuffix(suffix);
                 sidebar.getScore(name).setScore(length - i);
             } else {
                 scoreboard.resetScores(name);
