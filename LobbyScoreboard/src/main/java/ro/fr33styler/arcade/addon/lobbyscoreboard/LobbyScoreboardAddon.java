@@ -25,7 +25,7 @@ import java.io.File;
 import java.util.*;
 import java.util.function.BiFunction;
 
-@Description(id = "LobbyScoreboard", author = "Fr33styler", version = "1.01")
+@Description(id = "LobbyScoreboard", author = "Fr33styler", version = "1.02")
 public class LobbyScoreboardAddon extends Addon implements Configuration, Listener {
 
     private BukkitTask task;
@@ -93,7 +93,7 @@ public class LobbyScoreboardAddon extends Addon implements Configuration, Listen
         if (!whitelist.contains(player.getWorld().getName())) return;
 
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
-        Objective sidebar = scoreboard.registerNewObjective("LobbyScoreboard", "dummy", "LobbyScoreboard");
+        Objective sidebar = scoreboard.registerNewObjective("LobbyScoreboard", "dummy");
         sidebar.setDisplaySlot(DisplaySlot.SIDEBAR);
 
         setUpTeams(scoreboard);
