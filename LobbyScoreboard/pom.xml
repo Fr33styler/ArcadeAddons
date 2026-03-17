@@ -12,66 +12,26 @@
     <artifactId>LobbyScoreboard</artifactId>
 
     <build>
+        <finalName>LobbyScoreboard</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.6.1</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.5.0</version>
                 <configuration>
-                    <finalName>LobbyScoreboard</finalName>
-                    <relocations>
-                        <relocation>
-                            <pattern>ro.fr33styler.gameengine.api.</pattern>
-                            <shadedPattern>ro.fr33styler.arcade.api.engine.</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>ro.fr33styler.gameengine.api.</pattern>
-                            <shadedPattern>ro.fr33styler.arcade.api.engine.</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>ro.fr33styler.gameengine.</pattern>
-                            <shadedPattern>ro.fr33styler.arcade.engine.</shadedPattern>
-                        </relocation>
-                    </relocations>
-                    <minimizeJar>true</minimizeJar>
-                    <createDependencyReducedPom>false</createDependencyReducedPom>
-                    <filters>
-                        <filter>
-                            <artifact>*:*</artifact>
-                            <excludes>
-                                <exclude>META-INF/maven/**</exclude>
-                                <exclude>META-INF/*.SF</exclude>
-                                <exclude>META-INF/*.DSA</exclude>
-                                <exclude>META-INF/*.RSA</exclude>
-                                <exclude>META-INF/MANIFEST.MF</exclude>
-                            </excludes>
-                        </filter>
-                    </filters>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
                 </configuration>
-
             </plugin>
         </plugins>
     </build>
 
     <dependencies>
         <dependency>
-            <groupId>ro.fr33styler.minecraft</groupId>
-            <artifactId>game-engine-api</artifactId>
-            <version>1.0-LATEST</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.18.2-R0.1-SNAPSHOT</version>
+            <groupId>com.github.Fr33styler.ApiPack</groupId>
+            <artifactId>arcade-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

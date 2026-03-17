@@ -6,9 +6,9 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import ro.fr33styler.gameengine.api.addon.Addon;
-import ro.fr33styler.gameengine.api.addon.annotation.Description;
-import ro.fr33styler.gameengine.api.event.game.player.GameJoinEvent;
+import ro.fr33styler.arcade.api.engine.addon.Addon;
+import ro.fr33styler.arcade.api.engine.addon.annotation.Description;
+import ro.fr33styler.arcade.api.engine.event.game.player.GameJoinEvent;
 
 @Description(id = "ResetScaleOnJoin", author = "Fr33styler", version = "1.01")
 public class ResetScaleOnJoin extends Addon implements Listener {
