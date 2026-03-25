@@ -26,7 +26,7 @@ import java.io.File;
 import java.util.*;
 import java.util.function.BiFunction;
 
-@Description(id = "LobbyScoreboard", author = "Fr33styler", version = "1.02")
+@Description(id = "LobbyScoreboard", author = "Fr33styler", version = "1.03")
 public class LobbyScoreboardAddon extends Addon implements Configuration, Listener {
 
     private int feature;
@@ -78,7 +78,7 @@ public class LobbyScoreboardAddon extends Addon implements Configuration, Listen
             setNewScoreboard(user.toPlayer());
         });
 
-        String[] version = Bukkit.getServer().getBukkitVersion().substring(0, Bukkit.getServer().getBukkitVersion().length() - 14).split("\\.");
+        String[] version = Bukkit.getServer().getBukkitVersion().split("\\.");
         feature = Integer.parseInt(version[0].equals("1") ? version[1] : version[0]);
     }
 
