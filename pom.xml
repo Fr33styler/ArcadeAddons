@@ -12,6 +12,7 @@
         <module>LobbyScoreboard</module>
         <module>ResetScaleOnJoin</module>
         <module>RevokePetOnJoin</module>
+        <module>StartMessage</module>
     </modules>
 
     <properties>
