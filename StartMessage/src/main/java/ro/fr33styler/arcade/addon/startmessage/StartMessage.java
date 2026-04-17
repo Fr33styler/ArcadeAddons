@@ -19,7 +19,7 @@ import ro.fr33styler.arcade.api.engine.game.Game;
 import java.io.File;
 import java.util.*;
 
-@Description(id = "StartMessage", author = "Fr33styler, Rafael Auler", version = "1.0.2")
+@Description(id = "StartMessage", author = "Fr33styler, Rafael Auler", version = "1.0.3")
 public class StartMessage extends Addon implements Configuration, Listener {
 
     @Setting("sound")
