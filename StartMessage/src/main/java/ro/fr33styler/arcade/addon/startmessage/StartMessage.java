@@ -69,6 +69,10 @@ public class StartMessage extends Addon implements Configuration, Listener {
     }
 
     private void onRun() {
+        starting.entrySet().removeIf(entry -> {
+            Game game = entry.getValue().getGame();
+            return game.getGamers().size() < game.getMap().getMinimumPlayers();
+        });
         for (StartingGame startingGame : starting.values()) {
 
             Game game = startingGame.getGame();
