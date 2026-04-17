@@ -13,6 +13,8 @@
         <module>ResetScaleOnJoin</module>
         <module>RevokePetOnJoin</module>
         <module>StartMessage</module>
+        <module>NoWeather</module>
+        <module>HideFromLobbyOnJoin</module>
     </modules>
 
     <properties>
